@@ -22,9 +22,7 @@ public:
             }
         }
 
-        vector<int> result;
-        result.push_back(answer1);
-        result.push_back(answer2);
-        return result;
+        
+        return {answer1,answer2};
     }
 };
