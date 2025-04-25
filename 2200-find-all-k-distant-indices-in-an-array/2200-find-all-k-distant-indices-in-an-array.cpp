@@ -6,6 +6,7 @@ public:
             for(int j=0;j<nums.size();j++){
              if(abs(i-j)<=k&&nums[j]==key){
               v.insert(i);
+              break;
              }
             }
         }
