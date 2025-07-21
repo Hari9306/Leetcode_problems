@@ -1,0 +1,19 @@
+class Solution {
+public:
+ bool haszero(int num) {
+        while (num) {
+            if (num % 10 == 0) return true;
+            num /= 10;
+        }
+        return false;
+    }
+    vector<int> getNoZeroIntegers(int n) {
+        for (int a = 1; a < n; ++a) {
+            int b = n - a;
+            if (!haszero(a) && !haszero(b)) {
+                return {a, b};
+            }
+        }
+        return {};
+    }
+};
