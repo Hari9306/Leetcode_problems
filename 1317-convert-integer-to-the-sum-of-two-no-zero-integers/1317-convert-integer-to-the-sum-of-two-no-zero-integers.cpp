@@ -7,6 +7,10 @@ public:
         }
         return false;
     }
+
+
+
+    
     vector<int> getNoZeroIntegers(int n) {
         for (int a = 1; a < n; ++a) {
             int b = n - a;
