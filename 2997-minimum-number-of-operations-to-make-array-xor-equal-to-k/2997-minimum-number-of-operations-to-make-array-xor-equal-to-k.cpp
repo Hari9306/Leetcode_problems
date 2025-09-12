@@ -3,8 +3,8 @@ public:
     int set_bits(int n){
         long long cnt=0;
         while(n>0){
-            cnt+=(n&1);
-            n=n>>1;
+            cnt++;
+            n=n&(n-1);
         }
         return cnt;
     }
