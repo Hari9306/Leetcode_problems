@@ -2,10 +2,10 @@ class Solution {
 public:
     int countUnguarded(int m, int n, vector<vector<int>>& guards, vector<vector<int>>& walls) {
       vector<vector<char>> grid(m, vector<char>(n, '.'));
-        for(int i=0;i<guards.size();i++) grid[guards[i][0]][guards[i][1]]='G';
         for(int i=0;i<walls.size();i++)  grid[walls[i][0]][walls[i][1]]='W';
         
         for(int i=0;i<guards.size();i++){
+            grid[guards[i][0]][guards[i][1]]='G';
             int x=guards[i][0];
             int y=guards[i][1];
             //left 
