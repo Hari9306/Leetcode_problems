@@ -10,21 +10,32 @@
  */
 class Solution {
 public:
-    bool isPalindrome(ListNode* head) {
-        stack <int> st;
-        ListNode * curr=head;
+    ListNode* rev(ListNode* head){
+        ListNode* prev=NULL;
+        ListNode* curr=head;
         while(curr){
-            st.push(curr->val);
-            curr=curr->next;
+            ListNode*temp=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=temp;
         }
-        curr=head;
-        while(curr!=NULL){
-            if(curr->val!=st.top()) return false;
-            else {
-                curr=curr->next;
-                st.pop();
+        return prev;
+    }
+    bool isPalindrome(ListNode* head) {
+       ListNode* slow=head;
+       ListNode* fast=head;
+       while(fast && fast->next){
+        slow=slow->next;
+        fast=fast->next->next;
+       }
+       ListNode* temp=rev(slow);
+       while(temp && head){
+            if(temp -> val != head->val){
+                 return false;
             }
-        }
-        return true;
+            temp=temp->next;
+            head=head->next;
+       }
+       return true;
     }
 };
