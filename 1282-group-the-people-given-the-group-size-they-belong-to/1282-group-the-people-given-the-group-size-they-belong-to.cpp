@@ -1,24 +1,24 @@
 class Solution {
 public:
     vector<vector<int>> groupThePeople(vector<int>& groupSizes) {
-        map<int, vector<int>> mpp;
-        for (int i = 0; i < groupSizes.size(); i++) {
+        map<int,vector<int>>mpp;
+        for(int i=0;i<groupSizes.size();i++){
             mpp[groupSizes[i]].push_back(i);
         }
-
-        vector<vector<int>> ans;
-
-        for (auto it : mpp) {
-            int i = 0, n = it.second.size();
-            while (i < n) {
-                vector<int> res;
-                int idx = it.first;
-                while (idx--) {
-                    res.push_back(it.second[i++]);
+        vector<vector<int>>res;
+        for(auto it: mpp){
+            vector<int>ans;
+            for(auto i:it.second){
+                if(ans.size()==it.first){
+                    res.push_back(ans);
+                    ans.clear();
                 }
-                ans.push_back(res);
+                ans.push_back(i);
+            }
+             if(!ans.empty()){
+                res.push_back(ans);
             }
         }
-         return ans;
-     }
-    };
+        return res;
+    }
+};
