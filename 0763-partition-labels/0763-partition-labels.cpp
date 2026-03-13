@@ -1,17 +1,19 @@
 class Solution {
 public:
     vector<int> partitionLabels(string s) {
-        vector<int> idx(26);
-        for(int i=0;i<s.size();i++) idx[s[i]-'a']=i;
-        vector<int>ans;
-        int st=0,end=0;
+        map<char,int>mpp;
         for(int i=0;i<s.size();i++){
-            end=max(end,idx[s[i]-'a']);
+            mpp[s[i]]=i;
+        }
+        vector<int>res;
+        int start=0,end=0;
+        for(int i=0;i<s.size();i++){
+            end=max(end,mpp[s[i]]);
             if(i==end){
-                ans.push_back(end-st+1);
-                st=i+1;
+                res.push_back(end-start+1);
+                start=i+1;
             }
         }
-        return ans;
+        return res;
     }
 };
