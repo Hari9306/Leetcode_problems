@@ -1,14 +1,13 @@
 class Solution {
 public:
-    int rev(int x){
-        int temp=0;
-        while(x>0){
-            temp=temp*10+(x%10);
-            x/=10;
-        }
-        return temp;
-    }
     int mirrorDistance(int n) {
-        return  abs(n-rev(n));
+        int org=n;
+        int rev=0;
+        while(n > 0){
+            int temp=n%10;
+            rev=rev*10+temp;
+            n/=10;
+        }
+        return abs(org-rev);
     }
 };
