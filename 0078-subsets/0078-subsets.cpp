@@ -1,24 +1,23 @@
 class Solution {
 public:
-    void sub(vector<int>&nums,int idx,vector<vector<int>>&ans,vector<int>&res,int n){
+    void  rec(int idx, vector<int> &ds,vector<vector<int>> &ans,vector<int>& nums,int n){
         if(idx==n){
-            ans.push_back(res);
-            return ;
+            ans.push_back(ds);
+            return;
         }
-        // no pick 
-        sub(nums,idx+1,ans,res,n);
-        res.push_back(nums[idx]);
-        //pick     
-        sub(nums,idx+1,ans,res,n);
-        res.pop_back();
-        
+        // not take 
+        rec(idx+1,ds,ans,nums,n);
+        ds.push_back(nums[idx]);
+        //take
+        rec(idx+1,ds,ans,nums,n);
+        ds.pop_back();
     }
     vector<vector<int>> subsets(vector<int>& nums) {
-        int n=nums.size();
         int idx=0;
-        vector<vector<int>> ans;
-         vector<int> res;
-        sub(nums,idx,ans,res,n);     
-        return ans;   
+        int n=nums.size();
+        vector<int> ds;
+        vector<vector<int>>ans;
+        rec(idx,ds,ans,nums,n);
+        return ans;
     }
 };
