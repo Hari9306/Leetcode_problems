@@ -5,14 +5,13 @@ public:
         int n=asteroids.size();
         long long sum=mass;
         for(int i=0;i<n;i++){
-            if(sum>=asteroids[i]){
+            if(sum >= asteroids[i]){
                 sum+=asteroids[i];
             }
-            else {
+            else{
                 return false;
             }
         }
-        
-        return true ;
+        return true;
     }
 };
