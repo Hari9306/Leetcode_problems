@@ -11,28 +11,50 @@
 class Solution {
 public:
     int pairSum(ListNode* head) {
-        int n=0;
-        ListNode* root=head;
-        while(root){
-            root=root->next;
-            n++;
+        // hash map
+        // int n=0;
+        // ListNode* root=head;
+        // while(root){
+        //     root=root->next;
+        //     n++;
+        // }
+        // int i=0;
+        // map<int,int>mpp;
+        // while(i < n/2 && head ){
+        //     mpp[i]=head->val;
+        //     head=head->next;
+        //     i++;
+        // }
+        // while(i < n){
+        //     mpp[n-1-i]+=head->val;
+        //     head=head->next;
+        //     i++;
+        // }
+        // int maxi=INT_MIN;
+        // for(auto x : mpp){
+        //     maxi=max(maxi,x.second);
+        // }
+        // return maxi;
+        ListNode* slow =head;
+        ListNode* fast=head;
+        while(fast && fast->next){
+            slow=slow->next;
+            fast=fast->next->next;
         }
-        int i=0;
-        map<int,int>mpp;
-        while(i < n/2 && head ){
-            mpp[i]=head->val;
-            head=head->next;
-            i++;
+        ListNode* prev=NULL,*curr=slow;
+        while(curr){
+            ListNode* node=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=node;
         }
-        while(i < n){
-            mpp[n-1-i]+=head->val;
-            head=head->next;
-            i++;
+        int ans=0;
+        ListNode * p1=head,*p2=prev;
+        while(p2){
+            ans=max(ans,p1->val+p2->val);
+            p1=p1->next;
+            p2=p2->next;
         }
-        int maxi=INT_MIN;
-        for(auto x : mpp){
-            maxi=max(maxi,x.second);
-        }
-        return maxi;
+        return ans;
     }
 };
