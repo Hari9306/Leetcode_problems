@@ -1,9 +1,9 @@
 class Solution {
 public:
     int maxNumberOfBalloons(string text) {
-        vector<int>freq(26,0);
-        for(char c :text){
-            freq[c-'a']++;
+        vector<int> freq(26,0);
+        for(auto ch : text ){
+            freq[ch-'a']++;
         }
         int b=freq['b'-'a'];
         int a=freq['a'-'a'];
