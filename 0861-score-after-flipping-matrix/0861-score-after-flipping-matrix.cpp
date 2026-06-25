@@ -1,38 +1,44 @@
 class Solution {
 public:
     int matrixScore(vector<vector<int>>& grid) {
-        for(int i=0;i<grid.size();i++){
-            if(grid[i][0]==0){
-                for(int j=0;j<grid[0].size();j++){
-                    if(grid[i][j]==0){
-                        grid[i][j]=1;
-                    }
-                    else{
-                        grid[i][j]=0;
-                    }
+        int n=grid.size();
+        int m=grid[0].size();
+        int j=0;
+        for(int i=0;i<n;i++){
+            if(grid[i][j]==0){
+                for(int k=0;k<m;k++){
+                    grid[i][k]=grid[i][k]== 1 ? 0 : 1;
                 }
             }
         }
-        
-            for(int j=0;j<grid[0].size();j++){
-                int ones=0;
-                for(int i=0;i<grid.size();i++){
-                    if(grid[i][j]==1) ones++;
-                }
-                if(ones<grid.size()-ones){
-                    for (int i = 0; i < grid.size(); i++) {
-                    grid[i][j] = 1 - grid[i][j]; 
-                }
+        for(int i=0;i<m;i++){
+            int zero=0;
+            int one=0;
+            for(int j=0;j<n;j++){
+                if(grid[j][i]) one++;
+                else zero++;
+            }
+            if(zero > one){
+                for(int j=0;j<n;j++){
+                    grid[j][i]=grid[j][i]== 1 ? 0 : 1;
                 }
             }
-         int sum = 0;
-        for (int i = 0; i < grid.size(); i++) {
-            int rowVal = 0;
-            for (int j = 0; j < grid[0].size(); j++) {
-                rowVal = (rowVal << 1) + grid[i][j]; 
-            }
-            sum += rowVal;
         }
-        return sum;
+        int sum=0;
+        for(int i=0;i<n;i++){
+            int val=0;
+            int power=0;
+            for(int j=m-1;j>=0;j--){
+                if(grid[i][j]==1) {
+                    val +=(pow(2,power));
+                    power++; 
+                }
+                else {
+                    power++;
+                }
+            }
+            sum+=val;
+        }
+        return sum ;
     }
 };
