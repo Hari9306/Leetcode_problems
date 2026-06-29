@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int appendCharacters(string s, string t) {
+        int n=s.size();
+        int i=0,j=0;
+        while(i < n){
+            if(s[i]==t[j]){
+                j++;
+                i++;
+            }
+            else{
+                i++;
+            }
+        }   
+        return t.size()-j;
+    }
+};
