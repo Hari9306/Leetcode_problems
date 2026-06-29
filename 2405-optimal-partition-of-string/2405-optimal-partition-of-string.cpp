@@ -1,19 +1,16 @@
 class Solution {
 public:
     int partitionString(string s) {
-        int cnt=1;
-        int freq[26]={0};
-        for(int i=0;i<s.size();i++){
-            char ch=s[i];
-            int idx=ch-'a';
-            if(freq[idx] == 1){
+        vector<int> freq(26,0);
+        int cnt=0;
+        for(auto ch : s){
+            freq[ch-'a']++;
+            if(freq[ch-'a']>1){
                 cnt++;
-                for(int j=0;j<26;j++){
-                    freq[j]=0;
-                }
+                for(int i=0;i<26;i++) freq[i]=0;
+                freq[ch-'a']=1;
             }
-            freq[idx]=1;
         }
-        return cnt;
+        return cnt+1;
     }
 };
