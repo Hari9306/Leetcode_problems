@@ -6,7 +6,7 @@ public:
         pref[0]=arr[0];
         for(int i=1;i<n;i++){
             pref[i]=pref[i-1]^arr[i];
-            cout<< pref[i]<<" ";
+            // cout<< pref[i]<<" ";
         }
         vector<int> ans;
         for(auto x  : queries){
