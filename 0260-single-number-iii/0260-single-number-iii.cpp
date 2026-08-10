@@ -1,19 +1,12 @@
 class Solution {
 public:
     vector<int> singleNumber(vector<int>& nums) {
-        int x=0;
+        long long  x=0;
         for(int i=0;i<nums.size();i++){
             x^=nums[i];
         }
-        int mask=1;
-        while(1){
-            if((mask&x)==0){
-                mask=mask<<1;
-            }
-            else{
-                break;
-            }
-        }
+         long long mask=x&(x-1);
+         mask^=x;
         int b1=0,b2=0;
         for(int i=0;i<nums.size();i++){
             if(nums[i]&mask){
