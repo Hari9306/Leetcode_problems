@@ -1,38 +1,38 @@
 class Solution {
 public:
     vector<vector<int>> generateMatrix(int n) {
-        vector<vector<int>> res(n,vector<int>(n));
+        vector<vector<int>> ans(n,vector<int>(n,0));
         int top=0;
         int bottom=n-1;
         int left=0;
         int right=n-1;
         int val=1;
-        while(val <= n*n){
+        while(val<=n*n){
             for(int i=left;i<=right;i++){
-                res[top][i]=val;
+                ans[top][i]=val;
                 val++;
             }
             top++;
             for(int i=top;i<=bottom;i++){
-                res[i][right]=val;
+                ans[i][right]=val;
                 val++;
             }
             right--;
-            if(top<=bottom){
-                for(int j=right;j>=left;j--){
-                    res[bottom][j]=val;
+            if(left<=right){
+                for(int i=right;i>=left;i--){
+                    ans[bottom][i]=val;
                     val++;
                 }
                 bottom--;
             }
             if(left<=right){
                 for(int i=bottom;i>=top;i--){
-                    res[i][left]=val;
+                    ans[i][left]=val;
                     val++;
                 }
                 left++;
             }
         }
-        return res;
+        return ans;
     }
 };
