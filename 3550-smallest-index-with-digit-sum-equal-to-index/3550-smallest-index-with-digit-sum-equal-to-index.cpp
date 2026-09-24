@@ -1,22 +1,21 @@
 class Solution {
 public:
+    int Sum(int x){
+        int ans = 0;
+        while(x > 0){
+            ans += (x%10);
+            x/=10;
+        }
+        return ans;
+    }
     int smallestIndex(vector<int>& nums) {
+        int ans=INT_MAX;
         for(int i=0;i<nums.size();i++){
-            if(nums[i]>9){
-                int sum=0;
-                int temp =nums[i];
-                while(temp!=0){
-                    sum+=(temp%10);
-                    temp/=10;
-                }
-                if(sum==i){
-                    return i;
-                }
-            }
-            else if (nums[i]==i) {
-                return i;
+            int sum = Sum(nums[i]);
+            if(sum==i){
+                ans=min(i,ans);
             }
         }
-        return -1;
+        return ans==INT_MAX ? -1 : ans;
     }
 };
