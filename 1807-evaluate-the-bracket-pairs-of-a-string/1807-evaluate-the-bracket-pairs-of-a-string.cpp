@@ -2,7 +2,7 @@ class Solution {
 public:
     string evaluate(string s, vector<vector<string>>& knowledge) {
         int n=s.size();
-        map<string ,string> mpp;
+        unordered_map<string ,string> mpp;
         for(auto x : knowledge){
             mpp[x[0]]=x[1];
         }
