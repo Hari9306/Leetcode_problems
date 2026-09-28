@@ -1,26 +1,25 @@
 class Solution {
 public:
-    void rec(vector<string> &res, int open , int close,string s,int n){
-        if(open == 0 && close==0) {
-            res.push_back(s);
-            return ;
+    void rec(vector<string>& ans,string s,int n,int open,int close){
+        if(open==n && close==n){
+            ans.push_back(s);
+            return;
         }
-        if(open){
-            s+='(';
-            rec(res,open-1,close,s,n);
+        if(open < n){
+            s.push_back('(');
+            rec(ans,s,n,open+1,close);
             s.pop_back();
         }
-        if(close > open){
-            s+=')';
-            rec(res,open,close-1,s,n);
+        if(open > close){
+            s.push_back(')');
+            rec(ans,s,n,open,close+1);
             s.pop_back();
         }
-        return;
     }
     vector<string> generateParenthesis(int n) {
-        string s="";
-        vector<string> res;
-        rec(res,n,n,s,n);
-        return res;
+        vector<string> ans;
+        string s;
+        rec(ans,s,n,0,0);
+        return ans;   
     }
 };
