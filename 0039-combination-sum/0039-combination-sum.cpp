@@ -1,6 +1,6 @@
 class Solution {
 public:
-    void rec(int idx,int tar,vector<int> res,vector<vector<int>>& ans,vector<int>& candidates){
+    void rec(int idx,int tar,vector<int> &res,vector<vector<int>>& ans,vector<int>& candidates){
         if(tar==0){
             ans.push_back(res);
             return ;
