@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/reach-end-of-array-with-max-score/">3282. Reach End of Array With Max Score</a></h2><h3>Medium</h3><hr><p>You are given an integer array <code>nums</code> of length <code>n</code>.</p>
+<h2><a href="https://leetcode.com/problems/reach-end-of-array-with-max-score">3282. Reach End of Array With Max Score</a></h2><h3>Medium</h3><hr><p>You are given an integer array <code>nums</code> of length <code>n</code>.</p>
 
 <p>Your goal is to start at index <code>0</code> and reach index <code>n - 1</code>. You can only jump to indices <strong>greater</strong> than your current index.</p>
 
