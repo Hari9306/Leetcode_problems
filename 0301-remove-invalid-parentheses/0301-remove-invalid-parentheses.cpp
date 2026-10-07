@@ -3,6 +3,7 @@ public:
     int mini;
     void rec(int idx,int open,int close,string &s,string &res,vector<string> &ans,int rem){
         if(close > open) return ; 
+        if(rem > mini) return ;
         if(idx==s.size()){
             if(open==close){
                 if(rem < mini){
