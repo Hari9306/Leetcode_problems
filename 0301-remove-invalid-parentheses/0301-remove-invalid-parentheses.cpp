@@ -27,7 +27,7 @@ public:
         string res;
         mini=INT_MAX;
         rec(0,0,0,s,res,ans,0);
-        set<string> st;
+        unordered_set<string> st;
         st.insert(ans.begin(),ans.end());
         ans.clear();
         for(auto x : st) ans.push_back(x);
