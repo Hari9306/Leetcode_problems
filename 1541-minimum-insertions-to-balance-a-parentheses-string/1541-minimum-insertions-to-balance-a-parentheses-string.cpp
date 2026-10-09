@@ -4,7 +4,6 @@ public:
         stack<char> st;
         int n = s.size();
         int i = 0, cnt = 0;
-
         while (i < n) {
             if (s[i] == '(') {
                 st.push('(');
@@ -32,12 +31,10 @@ public:
                 }
             }
         }
-
         while (!st.empty()) {
             cnt += 2;
             st.pop();
         }
-
         return cnt;
     }
 };
