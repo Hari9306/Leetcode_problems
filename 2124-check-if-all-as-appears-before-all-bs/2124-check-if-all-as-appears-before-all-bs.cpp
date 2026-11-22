@@ -1,11 +1,11 @@
 class Solution {
 public:
     bool checkString(string s) {
-     for(int i=1;i<s.length();i++){
-        if(s[i]=='b'&&s[i+1]=='a'){
-            return 0;
+        for(int i=0;i<s.size();i++){
+            if(s[i]=='b' && s[i+1]=='a'){
+                return false;
+            }
         }
-     }  
-     return 1;
+        return true;
     }
 };
